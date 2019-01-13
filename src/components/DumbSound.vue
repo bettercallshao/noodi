@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <p>Dumb Sound</p>
-    <button @click="play">
-      Doo
-    </button>
+  <div
+    class="big"
+    @mousemove="play"
+    @click="stop"
+  >
+    Dumb Sound
   </div>
 </template>
 
@@ -30,12 +31,19 @@ export default {
   },
   methods: {
     play: () => {
-      synth.triggerAttackRelease("C4", "2n");
-      synth.triggerAttackRelease("E4", "2n");
+      synth.triggerAttack("C4");
+    },
+    stop: () => {
+      synth.triggerRelease();
     }
   }
 };
 </script>
 
 <style scoped>
+.big {
+  background-color: red;
+  min-height: 800px;
+  min-width: 800px;
+}
 </style>
